@@ -11,7 +11,7 @@ function (user, context, callback) {
   var provider_arn = (
     'arn:aws:iam::' +
     configuration.AWS_ACCOUNT_ID +
-    ':saml-provider/ +
+    ':saml-provider/' +
     configuration.env + '-' +
     'auth0'
   );
