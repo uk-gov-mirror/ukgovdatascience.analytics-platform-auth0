@@ -18,7 +18,7 @@ function (user, context, callback) {
 
 
   user.awsRole = role_arn + ',' + provider_arn;
-  user.awsRoleSession = configuration.env + '_' + user.nickname;
+  user.awsRoleSession = user.nickname;
 
   context.samlConfiguration.mappings = {
     'https://aws.amazon.com/SAML/Attributes/Role': 'awsRole',
