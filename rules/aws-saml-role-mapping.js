@@ -4,7 +4,7 @@ function (user, context, callback) {
     'arn:aws:iam::' +
     configuration.AWS_ACCOUNT_ID +
     ':role/users/' +
-    configuration.ENV + '/' +
+    configuration.ENV + '_' +
     user.nickname
   );
 
@@ -18,10 +18,11 @@ function (user, context, callback) {
 
 
   user.awsRole = role_arn + ',' + provider_arn;
+  user.awsRoleSession = configuration.env + '_' + user.nickname;
 
   context.samlConfiguration.mappings = {
     'https://aws.amazon.com/SAML/Attributes/Role': 'awsRole',
-    'https://aws.amazon.com/SAML/Attributes/RoleSessionName': 'nickname'
+    'https://aws.amazon.com/SAML/Attributes/RoleSessionName': 'awsRoleSession'
   };
 
   callback(null, user, context);
