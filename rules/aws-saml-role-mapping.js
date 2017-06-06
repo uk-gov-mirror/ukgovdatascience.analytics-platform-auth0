@@ -12,7 +12,7 @@ function (user, context, callback) {
     'arn:aws:iam::' +
     configuration.AWS_ACCOUNT_ID +
     ':saml-provider/' +
-    configuration.env + '-' +
+    configuration.ENV + '-' +
     'auth0'
   );
 
