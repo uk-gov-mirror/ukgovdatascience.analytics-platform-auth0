@@ -1,6 +1,23 @@
 function (user, context, callback) {
-  user.awsRole = 'arn:aws:iam::' + configuration.AWS_ACCOUNT_ID + ':role/auth0' +
-    ',arn:aws:iam::' + configuration.AWS_ACCOUNT_ID + ':saml-provider/auth0';
+
+  var role_arn = (
+    'arn:aws:iam::' +
+    configuration.AWS_ACCOUNT_ID +
+    ':role/users/' +
+    configuration.ENV + '/' +
+    user.nickname
+  );
+
+  var provider_arn = (
+    'arn:aws:iam::' +
+    configuration.AWS_ACCOUNT_ID +
+    ':saml-provider/ +
+    configuration.env + '-' +
+    'auth0'
+  );
+
+
+  user.awsRole = role_arn + ',' + provider_arn;
   user.awsRoleSession = user.nickname;
 
   context.samlConfiguration.mappings = {
