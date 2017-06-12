@@ -58,4 +58,3 @@ function (user, context, callback) {
     }, cb);
   }
 }
-
