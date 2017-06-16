@@ -3,8 +3,8 @@ function (user, context, callback) {
   var role_arn = (
     'arn:aws:iam::' +
     configuration.AWS_ACCOUNT_ID +
-    ':role/users/' +
-    configuration.ENV + '_' +
+    ':role/' +
+    configuration.ENV + '_user_' +
     user.nickname
   );
 
