@@ -1,6 +1,7 @@
 function (user, context, callback) {
   
   var client_with_mfa = [
+    // RStudio client id
     'AsiY4W2JE2d4UOH8FDgUQV9AYAUWwZkk'
   ].indexOf(context.clientID) !== -1;
 
