@@ -17,7 +17,7 @@ function (user, context, callback) {
       provider: 'google-authenticator',
 
       // optional, the label shown in the authenticator app
-      issuer: 'MOJ Analytical Platform (dev)',
+      issuer: 'MOJ Analytical Platform (Alpha)',
 
       // optional, the key to use for TOTP. By default one is generated for you
       // key: '{YOUR_KEY_HERE}',
