@@ -25,9 +25,3 @@ function (user, context, callback) {
 
   callback(null, user, context);
 }
-allowRememberBrowser: false
-    };
-  }
-
-  callback(null, user, context);
-}
