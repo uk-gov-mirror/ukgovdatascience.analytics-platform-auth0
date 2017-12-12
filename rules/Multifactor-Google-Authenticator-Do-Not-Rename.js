@@ -7,7 +7,10 @@ function (user, context, callback) {
 
   var user_with_mfa = user.app_metadata && user.app_metadata.use_mfa;
 
-  if (mfa_enabled_connection) {
+  if (
+    user_with_mfa &&
+    mfa_enabled_connection
+  ) {
 
     context.multifactor = {
       provider: 'google-authenticator',
