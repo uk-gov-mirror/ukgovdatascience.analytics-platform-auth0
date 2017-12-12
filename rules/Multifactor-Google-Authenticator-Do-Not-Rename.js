@@ -1,17 +1,13 @@
 function (user, context, callback) {
 
-  var client_with_mfa = [
-    // RStudio client id
-    'rpYFh3GD2vmk13Rtcvre2gZY2dAvdBSS'
-  ].indexOf(context.clientID) !== -1;
+  var mfa_enabled_connection = [
+    'github',
+    'google-oauth2'
+  ].indexOf(context.connection) !== -1;
 
   var user_with_mfa = user.app_metadata && user.app_metadata.use_mfa;
 
-  if (
-    //!user.impersonated &&
-    //user_with_mfa &&
-    client_with_mfa
-  ) {
+  if (mfa_enabled_connection) {
 
     context.multifactor = {
       provider: 'google-authenticator',
@@ -24,6 +20,12 @@ function (user, context, callback) {
 
       // optional, defaults to true. false forces 2FA every time.
       allowRememberBrowser: false
+    };
+  }
+
+  callback(null, user, context);
+}
+allowRememberBrowser: false
     };
   }
 
