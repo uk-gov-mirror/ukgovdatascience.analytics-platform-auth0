@@ -1,27 +1,35 @@
 function (user, context, callback) {
 
-  var mfa_enabled_connection = [
-    'github',
-    'google-oauth2'
-  ].indexOf(context.connection) !== -1;
+    var mfa_enabled_connection = [
+        'github',
+        'google-oauth2'
+    ].indexOf(context.connection) !== -1;
 
-  var user_with_mfa = user.app_metadata && user.app_metadata.use_mfa;
+    // Exclude the following clients from mfa
+    var mfa_disabled_clients = [
+        '<clientID>'
+    ].indexOf(context.clientID) === -1;
 
-  if (mfa_enabled_connection) {
+    var user_with_mfa = user.app_metadata && user.app_metadata.use_mfa;
 
-    context.multifactor = {
-      provider: 'google-authenticator',
+    if (
+        mfa_enabled_connection &&
+        mfa_disabled_clients
+    ) {
 
-      // optional, the label shown in the authenticator app
-      issuer: 'MOJ Analytical Platform (Alpha)',
+        context.multifactor = {
+            provider: 'google-authenticator',
 
-      // optional, the key to use for TOTP. By default one is generated for you
-      // key: '{YOUR_KEY_HERE}',
+            // optional, the label shown in the authenticator app
+            issuer: 'MOJ Analytical Platform (Alpha)',
 
-      // optional, defaults to true. false forces 2FA every time.
-      allowRememberBrowser: false
-    };
-  }
+            // optional, the key to use for TOTP. By default one is generated for you
+            // key: '{YOUR_KEY_HERE}',
 
-  callback(null, user, context);
+            // optional, defaults to true. false forces 2FA every time.
+            allowRememberBrowser: false
+        };
+    }
+
+    callback(null, user, context);
 }
