@@ -7,7 +7,7 @@ function (user, context, callback) {
 
     // Exclude the following clients from mfa
     var mfa_disabled_clients = [
-        '<clientID>'
+        'oUb1V330oXKyMpTagAYDzWDY10U4ffWF'
     ].indexOf(context.clientID) === -1;
 
     var user_with_mfa = user.app_metadata && user.app_metadata.use_mfa;
