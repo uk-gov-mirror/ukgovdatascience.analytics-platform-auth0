@@ -1,7 +1,7 @@
 function (user, context, callback) {
 
     var request   = require('request');
-    var namespace = 'https://dev.mojanalytics.xyz/claims/';  // For custom claims, you must define a namespace for oidc compliance. See https://auth0.com/docs/api-auth/tutorials/adoption/scope-custom-claims
+    var namespace = 'https://api.alpha.mojanalytics.xyz/claims/';  // For custom claims, you must define a namespace for oidc compliance. See https://auth0.com/docs/api-auth/tutorials/adoption/scope-custom-claims
     var options   = {
         url: 'https://api.github.com/user/teams',
         headers: {
