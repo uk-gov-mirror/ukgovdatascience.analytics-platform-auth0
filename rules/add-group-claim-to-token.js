@@ -1,11 +1,15 @@
 function (user, context, callback) {
 
+  var targeted_clients = [
+    'oUb1V330oXKyMpTagAYDzWDY10U4ffWF'
+  ].indexOf(context.clientID) !== -1;
+
   function github_access_token() {
     var github_identity = _.find(user.identities, {connection: 'github'});
     return github_identity.access_token;
   }
 
-  if (context.connection === 'github') {
+  if (context.connection === 'github' && targeted_clients) {
     // For custom claims, you must define a namespace for oidc compliance.
     // See https://auth0.com/docs/api-auth/tutorials/adoption/scope-custom-claims
     var namespace = 'https://api.dev.mojanalytics.xyz/claims/';
