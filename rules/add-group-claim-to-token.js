@@ -32,7 +32,7 @@ function (user, context, callback) {
         });
 
         // Add the namespaced claims to ID token
-        context.idToken[namespace + "groups"] = git_teams.concat(user.app_metadata.authorization.groups);
+        context.idToken[namespace + "groups"] = git_teams;
       }
 
       return callback(null, user, context);
