@@ -15,7 +15,7 @@ function (user, context, callback) {
     var disabled_for_client = DISABLED_CLIENTS.indexOf(context.clientID) !== -1;
 
     if (disabled_for_user || disabled_for_connection || disabled_for_client) {
-        callback(null, user, context);
+        return callback(null, user, context);
     }
 
     getUserProfile(user)
@@ -24,11 +24,11 @@ function (user, context, callback) {
                 enableMFA(context);
             }
 
-            callback(null, user, context);
+            return callback(null, user, context);
         })
         .catch(function(err) {
             enableMFA(context);
-            callback(null, user, context);
+            return callback(null, user, context);
         });
 
 
