@@ -1,8 +1,5 @@
 function (user, context, callback) {
     var AUTHENTICATOR_LABEL = 'MOJ Analytical Platform (dev)';
-    var DISABLED_CLIENTS = [
-        'p4L2qRcSgWyqHjoHanJ4QyhWL1iX612i', // kubectl-oidc
-    ];
     var ENABLED_CONNECTIONS = [
         'github',
         'google-oauth2',
@@ -12,9 +9,9 @@ function (user, context, callback) {
 
     var disabled_for_user = user.app_metadata && user.app_metadata.use_mfa === false;
     var disabled_for_connection = ENABLED_CONNECTIONS.indexOf(context.connection) === -1;
-    var disabled_for_client = DISABLED_CLIENTS.indexOf(context.clientID) !== -1;
+    var is_refresh_token_grant = context.protocol === 'oauth2-refresh-token';
 
-    if (disabled_for_user || disabled_for_connection || disabled_for_client) {
+    if (disabled_for_user || disabled_for_connection || is_refresh_token_grant) {
         return callback(null, user, context);
     }
 
