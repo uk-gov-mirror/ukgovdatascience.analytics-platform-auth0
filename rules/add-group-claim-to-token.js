@@ -12,7 +12,7 @@ function (user, context, callback) {
   if (context.connection === 'github' && targeted_clients) {
     // For custom claims, you must define a namespace for oidc compliance.
     // See https://auth0.com/docs/api-auth/tutorials/adoption/scope-custom-claims
-    var namespace = 'https://api.dev.mojanalytics.xyz/claims/';
+    var namespace = 'https://api.alpha.mojanalytics.xyz/claims/';
     var options = {
       url: 'https://api.github.com/user/teams',
       headers: {
