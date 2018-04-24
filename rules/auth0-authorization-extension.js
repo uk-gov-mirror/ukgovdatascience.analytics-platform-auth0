@@ -4,7 +4,8 @@
  */
 function (user, context, callback) {
   // If connection is not passwordless skip this rule
-  if (context.connection !== 'email') {
+  var connection = user.identities[0].connection;
+  if (connection !== 'email') {
     return callback(null, user, context);
   }
 
@@ -51,7 +52,7 @@ function (user, context, callback) {
         "x-api-key": API_KEY
       },
       json: {
-        connectionName: context.connection || user.identities[0].connection,
+        connectionName: 'email',
         groups: user.groups
       },
       timeout: 5000

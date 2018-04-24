@@ -1,5 +1,6 @@
 function (user, context, callback) {
     var AUTHENTICATOR_LABEL = 'MOJ Analytical Platform (dev)';
+    var CONNECTION = user.identities[0].connection;
     var ENABLED_CONNECTIONS = [
         'github',
         'google-oauth2',
@@ -8,7 +9,7 @@ function (user, context, callback) {
 
 
     var disabled_for_user = user.app_metadata && user.app_metadata.use_mfa === false;
-    var disabled_for_connection = ENABLED_CONNECTIONS.indexOf(context.connection) === -1;
+    var disabled_for_connection = ENABLED_CONNECTIONS.indexOf(CONNECTION) === -1;
     var is_refresh_token_grant = context.protocol === 'oauth2-refresh-token';
 
     if (disabled_for_user || disabled_for_connection || is_refresh_token_grant) {
