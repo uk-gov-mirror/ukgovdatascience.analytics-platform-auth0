@@ -4,8 +4,8 @@ function (user, context, callback) {
   var whitelist = ['moj-analytical-services']; // authorized github orgs
 
   // Apply to 'github' connections only
-  if(context.connection === 'github'){
-    var github_identity = _.find(user.identities, { connection: 'github' });
+  var github_identity = _.find(user.identities, { connection: 'github' });
+  if (github_identity) {
     var access_token = github_identity.access_token;
 
     request({
