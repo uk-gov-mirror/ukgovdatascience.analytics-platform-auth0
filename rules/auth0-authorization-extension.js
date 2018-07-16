@@ -34,6 +34,7 @@ function (user, context, callback) {
         "x-api-key": configuration.AUTH_EXTENSION_API_KEY
       },
       json: true,
+      simple: true,
       body: {
         connectionName: 'email',
         groups: user.groups
