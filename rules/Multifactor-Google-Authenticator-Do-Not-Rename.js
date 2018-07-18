@@ -1,11 +1,12 @@
 function (user, context, callback) {
+    var rangeCheck = require('range_check');
+
     var AUTHENTICATOR_LABEL = 'MOJ Analytical Platform (Alpha)';
     var CONNECTION = user.identities[0].connection;
     var ENABLED_CONNECTIONS = [
         'github',
         'google-oauth2',
     ];
-    var MFA_CHALLENGE_EVERY_MINUTES = 8 * 60; // 8 hours
 
     //console.log('ip: ' + context.request.ip);
 
@@ -18,14 +19,9 @@ function (user, context, callback) {
     }
 
     // Skip MFA if user's IP is on a corporate network
-    var CORPORATE_NETWORK_IPS = [
-        // https://github.com/ministryofjustice/moj-ip-addresses/blob/master/moj-cidr-addresses.yml
-    ];
-    var userIsOnCorporateNetwork = CORPORATE_NETWORK_IPS.some(
-    function (ip) {
-        return context.request.ip === ip;
-    });
-
+    // configuration.CORPORATE_NETWORK_CIDRS is a space separated list of IP address ranges (CIDR notation)
+    var userIsOnCorporateNetwork =
+        rangeCheck.inRange(context.request.ip, configuration.CORPORATE_NETWORK_CIDRS.split(' '));
     if (!userIsOnCorporateNetwork) {
         //console.log('Not on corporate network. Enabling MFA.');
         enableMFA(context);
