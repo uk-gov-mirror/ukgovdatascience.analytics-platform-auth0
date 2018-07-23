@@ -7,8 +7,20 @@ function (user, context, callback) {
         'github',
         'google-oauth2',
     ];
-
-    //console.log('ip: ' + context.request.ip);
+    var CORPORATE_NETWORK_CIDRS = [
+        '157.203.176.138/31',
+        '157.203.176.140/32',
+        '157.203.177.190/31',
+        '157.203.177.192/32',
+        '212.137.36.224/28',
+        '62.25.109.192/28',
+        '81.134.202.29/32',
+        '195.59.75.0/24',
+        '194.33.192.0/25',
+        '194.33.193.0/25',
+        '194.33.196.0/25',
+        '194.33.197.0/25',
+    ];
 
     var disabled_for_user = user.app_metadata && user.app_metadata.use_mfa === false;
     var disabled_for_connection = ENABLED_CONNECTIONS.indexOf(CONNECTION) === -1;
@@ -18,17 +30,11 @@ function (user, context, callback) {
         return callback(null, user, context);
     }
 
-    // Skip MFA if user's IP is on a corporate network
-    // configuration.CORPORATE_NETWORK_CIDRS is a space separated list of IP address ranges (CIDR notation)
     var userIsOnCorporateNetwork =
-        rangeCheck.inRange(context.request.ip, configuration.CORPORATE_NETWORK_CIDRS.split(' '));
+        rangeCheck.inRange(context.request.ip, CORPORATE_NETWORK_CIDRS);
     if (!userIsOnCorporateNetwork) {
-        //console.log('Not on corporate network. Enabling MFA.');
         enableMFA(context);
     }
-    //else {
-    //    console.log('On corporate network. No MFA challenge (from Auth0 at least).');
-    //}
 
     function enableMFA(context) {
         context.multifactor = {
