@@ -1,7 +1,7 @@
 function (user, context, callback) {
 
   var targeted_clients = [
-    'p4L2qRcSgWyqHjoHanJ4QyhWL1iX612i'
+    'P742wMtS4iiA6axtbPd2ygpOa64gZqGD'
   ].indexOf(context.clientID) !== -1;
 
   var github_identity = _.find(user.identities, {connection: 'github'});
@@ -9,7 +9,7 @@ function (user, context, callback) {
   if (github_identity && targeted_clients) {
     // For custom claims, you must define a namespace for oidc compliance.
     // See https://auth0.com/docs/api-auth/tutorials/adoption/scope-custom-claims
-    var namespace = 'https://api.dev.mojanalytics.xyz/claims/';
+    var namespace = 'https://api.accelerator.data-science.org.uk/claims/';
     var options = {
       url: 'https://api.github.com/user/teams',
       headers: {

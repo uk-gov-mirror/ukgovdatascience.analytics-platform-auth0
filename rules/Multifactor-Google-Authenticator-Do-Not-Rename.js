@@ -1,7 +1,7 @@
 function (user, context, callback) {
     var rangeCheck = require('range_check');
 
-    var AUTHENTICATOR_LABEL = 'MOJ Analytical Platform (Alpha)';
+    var AUTHENTICATOR_LABEL = 'Accelerator Analytical Platform';
     var CONNECTION = user.identities[0].connection;
     var ENABLED_CONNECTIONS = [
         'github',

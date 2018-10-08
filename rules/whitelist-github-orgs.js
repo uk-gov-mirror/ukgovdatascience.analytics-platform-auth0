@@ -1,7 +1,7 @@
 function (user, context, callback) {
   var request = require('request');
 
-  var whitelist = ['moj-analytical-services']; // authorized github orgs
+  var whitelist = ['ukgovdatascience']; // authorized github orgs
 
   // Apply to 'github' connections only
   var github_identity = _.find(user.identities, { connection: 'github' });
