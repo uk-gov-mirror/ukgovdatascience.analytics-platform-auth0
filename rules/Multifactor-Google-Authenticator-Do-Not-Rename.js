@@ -1,7 +1,7 @@
 function (user, context, callback) {
     var rangeCheck = require('range_check');
 
-    var AUTHENTICATOR_LABEL = 'MOJ Analytical Platform (Alpha)';
+    var AUTHENTICATOR_LABEL = 'MOJ Analytical Platform (Dev)';
     var CONNECTION = user.identities[0].connection;
     var ENABLED_CONNECTIONS = [
         'github',
@@ -12,8 +12,9 @@ function (user, context, callback) {
         '157.203.176.140/32',
         '157.203.177.190/31',
         '157.203.177.192/32',
-        '212.137.36.224/28',
-        '62.25.109.192/28',
+        '212.137.36.224/32',
+        '62.25.109.192/32',
+        '195.92.38.16/28',
         '81.134.202.29/32',
         '195.59.75.0/24',
         '194.33.192.0/25',
@@ -30,7 +31,6 @@ function (user, context, callback) {
         return callback(null, user, context);
     }
 
-    console.log(context.request.ip);
     var userIsOnCorporateNetwork =
         rangeCheck.inRange(context.request.ip, CORPORATE_NETWORK_CIDRS);
     if (!userIsOnCorporateNetwork) {
