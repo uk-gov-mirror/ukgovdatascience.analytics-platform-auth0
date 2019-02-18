@@ -1,0 +1,29 @@
+{
+  "name": "auth0-html",
+  "version": "0.0.1",
+  "description": "Compile static HTML for use in Auth0 emails and hosted pages",
+  "scripts": {
+    "compile-sass": "node_modules/node-sass/bin/node-sass -r sass -o css",
+    "compile-html": "node_modules/nunjucks/bin/precompile templates > html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ministryofjustice/analytics-platform-auth0.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ministryofjustice/analytics-platform-auth0/issues"
+  },
+  "homepage": "https://github.com/ministryofjustice/analytics-platform-auth0#readme",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-inline-css": "^3.3.1",
+    "gulp-nunjucks": "^4.0.0",
+    "gulp-nunjucks-render": "^2.2.2",
+    "gulp-sass": "^4.0.2",
+    "inline-css": "2.4.1",
+    "node-sass": "4.11.0",
+    "nunjucks": "3.1.7"
+  }
+}
