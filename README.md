@@ -9,7 +9,7 @@ These are manually deployed - copy and paste into the Auth0 web console.
 
 ## rules
 
-Automated deployment - see: https://github.com/ministryofjustice/analytics-platform-ops#auth0
+Automated deployment - see: https://github.com/ministryofjustice/analytics-platform-ops#auth0-rules--hosted-pages
 
 ## hosted_pages
 
