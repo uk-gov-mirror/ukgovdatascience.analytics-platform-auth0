@@ -21,6 +21,7 @@ function (user, context, callback) {
         '194.33.193.0/25',
         '194.33.196.0/25',
         '194.33.197.0/25',
+        '51.149.2.8/32',
     ];
 
     var disabled_for_user = user.app_metadata && user.app_metadata.use_mfa === false;
