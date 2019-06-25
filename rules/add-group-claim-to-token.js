@@ -29,7 +29,7 @@ function (user, context, callback) {
           "moj-analytical-services",
         ];
         var git_teams = JSON.parse(body).map(function (team) {
-          if (team.organization.login in github_orgs) {
+          if (github_orgs.includes(team.organization.login)) {
             // TODO: namespace slugs by org
             return team.slug;
           }
