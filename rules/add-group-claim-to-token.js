@@ -1,7 +1,7 @@
 function (user, context, callback) {
 
   var targeted_clients = [
-    'oUb1V330oXKyMpTagAYDzWDY10U4ffWF'
+    'br2x64Dyp3G791evEcpaNSsgoAYJ7dzp'
   ].indexOf(context.clientID) !== -1;
 
   var github_identity = _.find(user.identities, {connection: 'github'});
@@ -9,7 +9,7 @@ function (user, context, callback) {
   if (github_identity && targeted_clients) {
     // For custom claims, you must define a namespace for oidc compliance.
     // See https://auth0.com/docs/api-auth/tutorials/adoption/scope-custom-claims
-    var namespace = 'https://api.alpha.mojanalytics.xyz/claims/';
+    var namespace = 'https://api.analytical-platform.service.justice.gov.uk/claims/';
     var options = {
       url: 'https://api.github.com/user/teams',
       headers: {
