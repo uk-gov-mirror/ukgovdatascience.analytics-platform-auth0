@@ -62,6 +62,11 @@
       margin-bottom: 0;
     }
   </style>
+  <script src="https://browser.sentry-cdn.com/5.6.3/bundle.min.js" integrity="sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript">
+    Sentry.init({ dsn: 'https://39e3ef4785bd4908838cd0d72d714720@sentry.service.dsd.io/152' });
+  </script>
   <script type="text/javascript">
 /*
 Details Element Polyfill 2.0.0
@@ -101,7 +106,7 @@ Copyright © 2017 Javan Makhmali
   <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
   <![endif]-->
 
-  <script src="https://cdn.auth0.com/js/lock/11.3/lock.min.js"></script>
+  <script src="https://cdn.auth0.com/js/lock/11.17/lock.min.js"></script>
   <script>
     // Decode utf8 characters properly
     var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
