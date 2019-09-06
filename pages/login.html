@@ -62,6 +62,11 @@
       margin-bottom: 0;
     }
   </style>
+  <script src="https://browser.sentry-cdn.com/5.6.3/bundle.min.js" integrity="sha384-/Cqa/8kaWn7emdqIBLk3AkFMAHBk0LObErtMhO+hr52CntkaurEnihPmqYj3uJho" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript">
+    Sentry.init({ dsn: 'https://39e3ef4785bd4908838cd0d72d714720@sentry.service.dsd.io/152' });
+  </script>
   <script type="text/javascript">
 /*
 Details Element Polyfill 2.0.0
@@ -101,24 +106,24 @@ Copyright © 2017 Javan Makhmali
   <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
   <![endif]-->
 
-  <script src="https://cdn.auth0.com/js/lock/11.3/lock.min.js"></script>
+  <script src="https://cdn.auth0.com/js/lock/11.17/lock.min.js"></script>
   <script>
     // Decode utf8 characters properly
     var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
     config.extraParams = config.extraParams || {};
-    
+
     var connection = config.connection;
     var prompt = config.prompt;
     var languageDictionary;
     var language;
-    
+
     if (config.dict && config.dict.signin && config.dict.signin.title) {
       languageDictionary = { title: config.dict.signin.title };
     } else if (typeof config.dict === 'string') {
       language = config.dict;
     }
     var loginHint = config.extraParams.login_hint;
-    
+
     var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
       auth: {
         redirectUrl: config.callbackURL,
