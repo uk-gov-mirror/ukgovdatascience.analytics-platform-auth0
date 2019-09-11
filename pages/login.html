@@ -153,6 +153,12 @@ Copyright © 2017 Javan Makhmali
       container: 'lockContainer',
     });
 
+    if (config.callbackURL.indexOf("apps.") !== -1) {
+      // hide help text for platform users from app users
+      document.querySelectorAll("details").forEach(function(x) {
+        x.parentNode.removeChild(x);
+      });
+    }
     lock.show();
   </script>
 </body>
