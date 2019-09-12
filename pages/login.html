@@ -124,6 +124,13 @@ Copyright © 2017 Javan Makhmali
     }
     var loginHint = config.extraParams.login_hint;
 
+    if (config.callbackURL.indexOf("apps.") !== -1) {
+      // hide help text for platform users from app users
+      document.querySelectorAll("details").forEach(function(x) {
+        x.parentNode.removeChild(x);
+      });
+    }
+
     var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
       auth: {
         redirectUrl: config.callbackURL,
@@ -143,7 +150,7 @@ Copyright © 2017 Javan Makhmali
         scope: "openid email profile repo read:user read:org",
       },
       theme: {
-        logo:            'https://cpanel-master.services.alpha.mojanalytics.xyz/static/images/gov.uk_logotype_crown.svg',
+        logo:            'https://controlpanel.services.alpha.mojanalytics.xyz/static/govuk-frontend/assets/images/govuk-crest.png',
         primaryColor:    '#000000'
       },
       prefill: loginHint ? { email: loginHint, username: loginHint } : null,
