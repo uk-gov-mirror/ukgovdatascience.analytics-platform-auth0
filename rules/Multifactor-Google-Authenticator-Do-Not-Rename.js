@@ -32,8 +32,14 @@ function (user, context, callback) {
         return callback(null, user, context);
     }
 
-    var userIsOnCorporateNetwork =
-        rangeCheck.inRange(context.request.ip, CORPORATE_NETWORK_CIDRS);
+    var userIsOnCorporateNetwork = false;
+    try {
+        userIsOnCorporateNetwork = rangeCheck.inRange(context.request.ip, CORPORATE_NETWORK_CIDRS);
+    } catch(error) {
+        // Log the IPv6 problem, just in case.
+        console.log("Connection from IPv6 address. Fall back to MFA.");
+        console.log(error);
+    }
     if (!userIsOnCorporateNetwork) {
         enableMFA(context);
     }
