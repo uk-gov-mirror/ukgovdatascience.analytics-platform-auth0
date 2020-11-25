@@ -11,7 +11,7 @@ function (user, context, callback) {
   }
 
   var _ = require('lodash');
-  var EXTENSION_URL = "https://dev-analytics-moj.eu12.webtask.io/adf6e2f2b84784b57522e3b19dfc9201";
+  var EXTENSION_URL = "https://alpha-analytics-moj.eu12.webtask.io/adf6e2f2b84784b57522e3b19dfc9201";
 
   var audience = '';
   audience = audience || (context.request && context.request.query && context.request.query.audience);
