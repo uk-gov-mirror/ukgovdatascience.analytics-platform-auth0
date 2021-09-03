@@ -1,7 +1,7 @@
 function (user, context, callback) {
 
   var targeted_clients = [
-    'oUb1V330oXKyMpTagAYDzWDY10U4ffWF'
+    'oUb1V330oXKyMpTagAYDzWDY10U4ffWF', 'ZzLujP0NHAQq03iR5uzw6WgGF6jBE7Nu'
   ].indexOf(context.clientID) !== -1;
 
   var github_identity = _.find(user.identities, {connection: 'github'});
